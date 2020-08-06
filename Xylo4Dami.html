@@ -60,11 +60,12 @@
 
         xylo.onload = function () {
             canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
-            canvCtx.font = "20px Arial";
+            canvCtx.font = "15px Arial";
             canvCtx.fillStyle = "white";
-            canvCtx.fillText("1) Set mic to stereo mixer on computer.", 10, 20);
-            canvCtx.fillText("2) Mute all other programs' and in-game volumes. Set Maplestory's volume at around 25 on computer.", 10, 40);
-            canvCtx.fillText("3) Click \'Start\' and allow mic usage.", 10, 60);
+            canvCtx.fillText("1) Set mic to stereo mixer on computer.", 10, 15);
+            canvCtx.fillText("2) Mute all other programs' and in-game volumes.", 10, 30);
+            canvCtx.fillText("3) Set Maplestory's volume at around 25 on computer.", 10, 45);
+            canvCtx.fillText("4) Click \'Start\' and allow mic usage.", 10, 60);
         };
 
 
@@ -128,7 +129,7 @@
     }
     
     var MIN_SAMPLES = 0;  // will be initialized when AudioContext is created.
-    var GOOD_ENOUGH_CORRELATION = 0.99; // this is the "bar" for how close a correlation needs to be
+    var GOOD_ENOUGH_CORRELATION = 0.991; // this is the "bar" for how close a correlation needs to be
     function autoCorrelate( buf, sampleRate ) {
         var SIZE = buf.length;
         var MAX_SAMPLES = Math.floor(SIZE/2);
@@ -143,7 +144,7 @@
             rms += val*val;
         }
         rms = Math.sqrt(rms/SIZE);
-        if (rms<0.015) // not enough signal
+        if (rms<0.0055) // not enough signal
             return -1;
     
         var lastCorrelation=1;
@@ -191,7 +192,7 @@
     
     var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
     var idArr = [];
-    const LEN = 10;
+    const LEN = 9;
     function update() {
         canvCtx.clearRect(0, 0, 500, 500)
         canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
