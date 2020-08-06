@@ -31,7 +31,7 @@
 </style>
 
 <body>
-<button onclick="toggleLiveInput()" id="Button" style="width:100px;"> Start </button>
+<button onclick="toggleLiveInput()" id="Button" style="width:100px;left:8px;position:absolute"> Start </button>
 <canvas id="canv"></canvas>
 <script>
     var analyser = null;
@@ -51,7 +51,7 @@
         // TODO
         canv.style.position = "absolute";
         canv.style.left = "0px";
-        canv.style.top = "50px";
+        canv.style.top = "25px";
         canv.width = 500;
         canv.height = 500;
 
@@ -60,9 +60,12 @@
 
         xylo.onload = function () {
             canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
+            canvCtx.font = "20px Arial";
+            canvCtx.fillStyle = "white";
+            canvCtx.fillText("1) Set mic to stereo mixer on system.", 10, 20);
+            canvCtx.fillText("2) Mute all volumes except for target.", 10, 40);
+            canvCtx.fillText("3) Click \'Start\' and allow mic usage.", 10, 60);
         };
-
-
 
 
         function hasGetUserMedia() {
@@ -106,8 +109,8 @@
         update();
     }
     
-    function toggleLiveInput(){
-    
+    function toggleLiveInput() {
+
         audioContext = new AudioContext();
     
         getUserMedia(
@@ -189,7 +192,13 @@
     var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
     var idArr = [];
     const LEN = 4;
-    function update () {
+    function update() {
+        canvCtx.clearRect(0, 0, 500, 500)
+        canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
+        canvCtx.font = "20px Arial";
+        canvCtx.fillStyle = "white";
+        canvCtx.fillText("Listening...", 10, 20);
+
         setInterval(function () {
             analyser.getFloatTimeDomainData( buf );
             var ac = autoCorrelate( buf, audioContext.sampleRate );
@@ -224,6 +233,10 @@
     function updateP (noteStr) {
         canvCtx.clearRect(0,0,500,500);
         canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
+        canvCtx.font = "20px Arial";
+        canvCtx.fillStyle = "white";
+        canvCtx.fillText("Listening...", 10, 20);
+
         if (noteStr === "C")
             canvCtx.drawImage(arrow, 0, 0, 50, 150, 12, 220, 25, 75);
         else if (noteStr === "D")
