@@ -58,19 +58,6 @@
 
     window.onload = function () {
         // TODO
-    
-        function hasGetUserMedia() {
-        return !!(navigator.mediaDevices &&
-            navigator.mediaDevices.getUserMedia);
-        }
-    
-        if (hasGetUserMedia()) {
-            // Good to go!
-            console.log("OK")
-        } 
-        else {
-            alert('Not supported by your browser');
-        }
     }
     
     function error() {
@@ -79,10 +66,8 @@
     
     function getUserMedia(dictionary, callback) {
         try {
-            navigator.getUserMedia = 
-                navigator.getUserMedia ||
-                navigator.webkitGetUserMedia ||
-                navigator.mozGetUserMedia;
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia;
             navigator.getUserMedia(dictionary, callback, error);
         } catch (e) {
             alert('getUserMedia threw exception :' + e);
