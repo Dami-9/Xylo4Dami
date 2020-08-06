@@ -62,8 +62,8 @@
             canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
             canvCtx.font = "20px Arial";
             canvCtx.fillStyle = "white";
-            canvCtx.fillText("1) Set mic to stereo mixer on system.", 10, 20);
-            canvCtx.fillText("2) Mute all volumes except for target.", 10, 40);
+            canvCtx.fillText("1) Set mic to stereo mixer on computer.", 10, 20);
+            canvCtx.fillText("2) Mute all other programs' and in-game volumes. Set Maplestory's volume at around 25 on computer.", 10, 40);
             canvCtx.fillText("3) Click \'Start\' and allow mic usage.", 10, 60);
         };
 
@@ -143,7 +143,7 @@
             rms += val*val;
         }
         rms = Math.sqrt(rms/SIZE);
-        if (rms<0.01) // not enough signal
+        if (rms<0.015) // not enough signal
             return -1;
     
         var lastCorrelation=1;
@@ -191,7 +191,7 @@
     
     var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
     var idArr = [];
-    const LEN = 4;
+    const LEN = 10;
     function update() {
         canvCtx.clearRect(0, 0, 500, 500)
         canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
@@ -227,7 +227,7 @@
                     console.log(idArr[0]);
                 }
             }
-        }, 1000/30);
+        }, 1000/90);
     };
 
     function updateP (noteStr) {
