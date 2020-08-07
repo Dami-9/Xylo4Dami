@@ -34,8 +34,11 @@
 </style>
 <body>
     <button onclick="toggleLiveInput()" id="Button" style="width:100px;left:8px;position:absolute"> Start </button>
+
     <canvas id="canv"></canvas>
     <canvas id="disc"></canvas>
+    <button id="firstl" onclick="window.open('https://www.howtogeek.com/howto/39532/how-to-enable-stereo-mix-in-windows-7-to-record-audio/#:~:text=Go%20down%20to%20the%20audio,%E2%80%9CStereo%20Mix%E2%80%9D%20option%20appear.', '_blank');"> ? </button>
+    <button id="secl" onclick="window.open('https://www.howtogeek.com/244963/how-to-adjust-the-volume-for-individual-apps-in-windows/#:~:text=To%20open%20the%20Volume%20Mixer,select%20%E2%80%9COpen%20Volume%20Mixer.%E2%80%9D&text=When%20you%20use%20an%20app,slider%20controls%20the%20master%20volume.', '_blank');"> ? </button>
     <script>
         var analyser = null;
         var mediaStreamSource = null;
@@ -49,6 +52,16 @@
         var discCtx = canv.getContext("2d");
         var xylo = new Image();
         var arrow = new Image(25, 75);
+
+        var firstl = document.getElementById("firstl");
+        firstl.style.position = "absolute";
+        firstl.style.left = "305px";
+        firstl.style.top = "25px";
+
+        var secl = document.getElementById("secl");
+        secl.style.position = "absolute";
+        secl.style.left = "340px";
+        secl.style.top = "40px";
 
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -212,6 +225,10 @@
         var idArr = [];
         const LEN = 9;
         function update() {
+            if (firstl.style.visibility != "hidden") {
+                firstl.style.visibility = "hidden";
+                secl.style.visibility = "hidden";
+            }
             canvCtx.clearRect(0, 0, 500, 500)
             canvCtx.drawImage(xylo, 0, 0, 500, 500, 0, 0, 300, 300);
             canvCtx.font = "20px Arial";
