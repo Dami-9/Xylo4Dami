@@ -4,4 +4,4 @@ This app provides assistance for pitch detection, of which, uses an auto-correla
 
 Added UI and removal of sharp/flat notes as required. 
 
-- dami
+, dami
