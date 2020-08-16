@@ -34,7 +34,7 @@
 </style>
 <body>
     <button onclick="toggleLiveInput()" id="Button" style="width:100px;left:8px;position:absolute"> Start </button>
-
+    <button onclick="toggle()" id="dami" style="width:200px;left:108px;position:absolute"> Made by Eledami of Cass. </button>
     <canvas id="canv"></canvas>
     <canvas id="disc"></canvas>
     <button id="firstl" onclick="window.open('https://www.howtogeek.com/howto/39532/how-to-enable-stereo-mix-in-windows-7-to-record-audio/#:~:text=Go%20down%20to%20the%20audio,%E2%80%9CStereo%20Mix%E2%80%9D%20option%20appear.', '_blank');"> ? </button>
@@ -52,6 +52,8 @@
         var discCtx = canv.getContext("2d");
         var xylo = new Image();
         var arrow = new Image(25, 75);
+
+        var butt = document.getElementById("dami");
 
         var firstl = document.getElementById("firstl");
         firstl.style.position = "absolute";
@@ -112,6 +114,12 @@
             else {
                 alert('Not supported by your browser');
             }
+        }
+
+        function toggle() {
+            if (butt.innerText === "Made by Eledami of Cass.")
+                butt.innerText = "Hope it helped you out :)";
+            else butt.innerText = "Made by Eledami of Cass.";
         }
 
         function error() {
