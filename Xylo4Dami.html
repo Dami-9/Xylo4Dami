@@ -34,10 +34,10 @@
 </style>
 <body>
     <button onclick="toggleLiveInput()" id="Button" style="width:100px;left:8px;position:absolute"> Start </button>
-    <button style="width:200px;top:4px;left:108px;position:absolute;background-color: Transparent;background-repeat:no-repeat;border:none;cursor:pointer;overflow:hidden;outline:none;color:white"> Made by Eledami of Cass. </button>
+    <button style="width:200px;top:4px;left:108px;position:absolute;background-color: Transparent;background-repeat:no-repeat;border:none;cursor:pointer;overflow:hidden;outline:none;color:white;cursor:default;"> Made by Eledami of Cass. </button>
     <canvas id="canv"></canvas>
     <canvas id="disc"></canvas>
-    <button style="width:340px;top:500px;left:0px;position:absolute;background-color: Transparent;background-repeat:no-repeat;border:none;cursor:pointer;overflow:hidden;outline:none;color:white"> You can tip me here if the app has helped you out! &#128522 </button>
+    <button style="width:340px;top:500px;left:0px;position:absolute;background-color: Transparent;background-repeat:no-repeat;border:none;cursor:pointer;overflow:hidden;outline:none;color:white;cursor:default;"> You can tip me here if the app has helped you out! &#128522 </button>
     <button id="firstl" onclick="window.open('https://www.howtogeek.com/howto/39532/how-to-enable-stereo-mix-in-windows-7-to-record-audio/#:~:text=Go%20down%20to%20the%20audio,%E2%80%9CStereo%20Mix%E2%80%9D%20option%20appear.', '_blank');"> ? </button>
     <button id="secl" onclick="window.open('https://www.howtogeek.com/244963/how-to-adjust-the-volume-for-individual-apps-in-windows/#:~:text=To%20open%20the%20Volume%20Mixer,select%20%E2%80%9COpen%20Volume%20Mixer.%E2%80%9D&text=When%20you%20use%20an%20app,slider%20controls%20the%20master%20volume.', '_blank');"> ? </button>
     <script>
@@ -61,6 +61,7 @@
         tipButton.style.height = 34;
         tipButton.style.top = "518px";
         tipButton.style.left = "8px";
+        tipButton.style.cursor = "pointer";
         tipButton.onclick = function () { window.open('https://paypal.me/itsmedami9') }; 
         var tip = new Image();
 
